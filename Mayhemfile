@@ -2,4 +2,4 @@ project: algorithms
 target: bitap
 
 cmds:
-  - cmd: /repo/algorithms/C++/BitapAlgorithm/bitap
+  - cmd: /bitap

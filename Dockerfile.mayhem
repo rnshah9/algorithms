@@ -7,11 +7,5 @@ COPY . /repo
 WORKDIR /repo/algorithms/C++/BitapAlgorithm
 RUN g++ -o bitap Bitap.cpp
 
-RUN mkdir -p /deps
-RUN ldd /repo/algorithms/C++/BitapAlgorithm/bitap | tr -s '[:blank:]' '\n' | grep '^/' | xargs -I % sh -c 'cp % /deps;'
-
 FROM ubuntu:22.04 as package
-
-COPY --from=builder /deps /deps
-COPY --from=builder /repo/algorithms/C++/BitapAlgorithm/bitap /repo/algorithms/C++/BitapAlgorithm/bitap
-ENV LD_LIBRARY_PATH=/deps
+COPY --from=builder /repo/algorithms/C++/BitapAlgorithm/bitap /
